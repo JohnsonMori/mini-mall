@@ -1,0 +1,4 @@
+view {
+  /* 使用 主题颜色 */
+  color: var(--themeColor);
+}
