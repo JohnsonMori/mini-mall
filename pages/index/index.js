@@ -5,7 +5,9 @@ Page({
     // 轮播图数组
     swiperList: [],
     // 导航 数组
-    cateList: []
+    cateList: [],
+    // 楼层 数据
+    floorList: []
   },
   // 页面开始加载 就会触发
   onLoad: function (options) {
@@ -21,6 +23,7 @@ Page({
 
     this.getSwiperList();
     this.getCateList();
+    this.getFloorList();
 
   },
 
@@ -39,6 +42,15 @@ Page({
       .then(result => {
         this.setData({
           cateList: result.data.message
+        })
+      })
+  },
+  // 获取 楼层数据
+  getFloorList() {
+    request({ url: "https://api-hmugo-web.itheima.net/api/public/v1/home/floordata" })
+      .then(result => {
+        this.setData({
+          floorList: result.data.message
         })
       })
   }
