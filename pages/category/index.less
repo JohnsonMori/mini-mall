@@ -13,13 +13,56 @@ page {
     .left_menu {
       /* 子项 高度 100% flex */
       flex: 2;
-      background-color: aqua;
+
+      .menu_item {
+        height: 80rpx;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 30rpx;
+      }
+
+      .active {
+        color: var(--themeColor);
+        border-left: 5rpx solid currentColor;
+      }
     }
 
     .right_content {
       /* 子项 高度 100% flex */
       flex: 5;
-      background-color: lawngreen;
+
+      .goods_group {
+        .goods_title {
+          height: 80rpx;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+
+          .delimiter {
+            color: #ccc;
+            padding: 0 10rpx;
+          }
+
+          .title {}
+        }
+
+        .goods_list {
+          display: flex;
+          flex-wrap: wrap;
+
+          navigator {
+            width: 33.33%;
+            text-align: center;
+
+            image {
+              width: 50%;
+            }
+
+            .goods_name {}
+          }
+        }
+      }
     }
   }
 }

@@ -12,10 +12,40 @@ page {
 .cates .cates_container .left_menu {
   /* 子项 高度 100% flex */
   flex: 2;
-  background-color: aqua;
+}
+.cates .cates_container .left_menu .menu_item {
+  height: 80rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 30rpx;
+}
+.cates .cates_container .left_menu .active {
+  color: var(--themeColor);
+  border-left: 5rpx solid currentColor;
 }
 .cates .cates_container .right_content {
   /* 子项 高度 100% flex */
   flex: 5;
-  background-color: lawngreen;
+}
+.cates .cates_container .right_content .goods_group .goods_title {
+  height: 80rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.cates .cates_container .right_content .goods_group .goods_title .delimiter {
+  color: #ccc;
+  padding: 0 10rpx;
+}
+.cates .cates_container .right_content .goods_group .goods_list {
+  display: flex;
+  flex-wrap: wrap;
+}
+.cates .cates_container .right_content .goods_group .goods_list navigator {
+  width: 33.33%;
+  text-align: center;
+}
+.cates .cates_container .right_content .goods_group .goods_list navigator image {
+  width: 50%;
 }
