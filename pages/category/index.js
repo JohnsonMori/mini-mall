@@ -28,5 +28,13 @@ Page({
                     rightContent
                 })
             })
+    },
+    // 左侧菜单的点击事件
+    handleItemTap(e) {
+        const { index } = e.currentTarget.dataset;
+        this.setData({
+            currentIndex: index,
+            rightContent: this.Cates[index].children
+        })
     }
 })
