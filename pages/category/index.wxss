@@ -1,1 +1,21 @@
-/* pages/category/index.wxss */
+page {
+  height: 100%;
+}
+.cates {
+  height: 100%;
+}
+.cates .cates_container {
+  /* less中使用calc的时候要注意 */
+  height: calc(100vh - 90rpx);
+  display: flex;
+}
+.cates .cates_container .left_menu {
+  /* 子项 高度 100% flex */
+  flex: 2;
+  background-color: aqua;
+}
+.cates .cates_container .right_content {
+  /* 子项 高度 100% flex */
+  flex: 5;
+  background-color: lawngreen;
+}
