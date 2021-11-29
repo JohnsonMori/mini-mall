@@ -13,7 +13,7 @@ Page({
   onLoad: function (options) {
     // 1 发送异步请求获取轮播图数据 优化的手段可以通过es6的 promise来解决这个问题
     // wx.request({
-    //   url: 'https://api-hmugo-web.itheima.net/api/public/v1/home/swiperdata',
+    //   url: '/home/swiperdata',
     //   success: (result) => {
     //     this.setData({
     //       swiperList: result.data.message
@@ -29,7 +29,7 @@ Page({
 
   // 获取轮播图数据
   getSwiperList() {
-    request({ url: "https://api-hmugo-web.itheima.net/api/public/v1/home/swiperdata" })
+    request({ url: "/home/swiperdata" })
       .then(result => {
         this.setData({
           swiperList: result.data.message
@@ -38,7 +38,7 @@ Page({
   },
   // 获取 分类导航数据
   getCateList() {
-    request({ url: "https://api-hmugo-web.itheima.net/api/public/v1/home/catitems" })
+    request({ url: "/home/catitems" })
       .then(result => {
         this.setData({
           cateList: result.data.message
@@ -47,7 +47,7 @@ Page({
   },
   // 获取 楼层数据
   getFloorList() {
-    request({ url: "https://api-hmugo-web.itheima.net/api/public/v1/home/floordata" })
+    request({ url: "/home/floordata" })
       .then(result => {
         this.setData({
           floorList: result.data.message
