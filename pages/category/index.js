@@ -6,7 +6,9 @@ Page({
         // 右侧的商品数据
         rightContent: [],
         // 被点击的左侧的菜单
-        currentIndex: 0
+        currentIndex: 0,
+        // 右侧内容的滚动条距离顶部的距离
+        scrollTop: 0
     },
     Cates: [],
 
@@ -51,7 +53,8 @@ Page({
         const { index } = e.currentTarget.dataset;
         this.setData({
             currentIndex: index,
-            rightContent: this.Cates[index].children
+            rightContent: this.Cates[index].children,
+            scrollTop: 0
         })
     }
 })

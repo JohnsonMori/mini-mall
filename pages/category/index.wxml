@@ -8,7 +8,7 @@
       </view>
     </scroll-view>
     <!-- 右侧商品内容 -->
-    <scroll-view class="right_content" scroll-y>
+    <scroll-view class="right_content" scroll-top="{{scrollTop}}" scroll-y>
       <view class="goods_group" wx:for="{{rightContent}}" wx:for-index="index1" wx:for-item="item1" wx:key="cat_id">
         <view class="goods_title">
           <text class="delimiter">/</text>
