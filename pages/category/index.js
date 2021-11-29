@@ -11,13 +11,30 @@ Page({
     Cates: [],
 
     onLoad: function (options) {
-        this.getCates();
+        const Cates = wx.getStorageSync("cates");
+        if (!Cates) {
+            this.getCates();
+        } else {
+            if (Date.now() - Cates.time > 1000 * 1000) {
+                this.getCates();
+            } else {
+                this.Cates = Cates.data;
+                let leftMenuList = this.Cates.map(v => v.cat_name);
+                let rightContent = this.Cates[0].children;
+                this.setData({
+                    leftMenuList,
+                    rightContent
+                })
+            }
+        }
     },
     // 获取分类数据
     getCates() {
         request({ url: "https://api-hmugo-web.itheima.net/api/public/v1/categories" })
             .then(res => {
                 this.Cates = res.data.message;
+
+                wx.setStorageSync("cates", { time: Date.now(), data: this.Cates });
 
                 // 构造左侧的大菜单数据
                 let leftMenuList = this.Cates.map(v => v.cat_name);
