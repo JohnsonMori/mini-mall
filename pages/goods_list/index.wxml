@@ -1,6 +1,36 @@
 <SearchInput />
 <Tabs tabs="{{tabs}}" bind:tabsItemChange="handleTabsItemChange">
-  <block wx:if="{{tabs[0].isActive}}">0</block>
+  <block wx:if="{{tabs[0].isActive}}">
+    <view class="first_tab">
+      <navigator class="goods_item">
+        <view class="goods_img_wrap">
+          <image mode="widthFix" src="http://image2.suning.cn/uimg/b2c/newcatentries/0070078057-000000000634917020_1_800x800.jpg" />
+        </view>
+        <view class="goods_info_wrap">
+          <view class="goods_name">创维（Skyworth）42X6 42英寸10核智能酷开网络平板液晶电视（黑色）</view>
+          <view class="goods_price">¥3999</view>
+        </view>
+      </navigator>
+      <navigator class="goods_item">
+        <view class="goods_img_wrap">
+          <image mode="widthFix" src="http://image2.suning.cn/uimg/b2c/newcatentries/0070078057-000000000634917020_1_800x800.jpg" />
+        </view>
+        <view class="goods_info_wrap">
+          <view class="goods_name">创维（Skyworth）42X6 42英寸10核智能酷开网络平板液晶电视（黑色）</view>
+          <view class="goods_price">¥3999</view>
+        </view>
+      </navigator>
+      <navigator class="goods_item">
+        <view class="goods_img_wrap">
+          <image mode="widthFix" src="http://image2.suning.cn/uimg/b2c/newcatentries/0070078057-000000000634917020_1_800x800.jpg" />
+        </view>
+        <view class="goods_info_wrap">
+          <view class="goods_name">创维（Skyworth）42X6 42英寸10核智能酷开网络平板液晶电视（黑色）</view>
+          <view class="goods_price">¥3999</view>
+        </view>
+      </navigator>
+    </view>
+  </block>
   <block wx:elif="{{tabs[1].isActive}}">1</block>
   <block wx:elif="{{tabs[2].isActive}}">2</block>
 </Tabs>
