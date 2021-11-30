@@ -6,7 +6,7 @@ export const request = (params) => {
       ...params,
       url: `${baseUrl}${params.url}`,
       success: (result) => {
-        resolve(result);
+        resolve(result.data.message);
       },
       fail: (err) => {
         reject(err);
