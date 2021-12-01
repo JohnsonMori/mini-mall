@@ -32,7 +32,8 @@ Page({
         pagenum: 1,
         pagesize: 10
     },
-
+    // 总页数
+    TotalPages: 1,
     /**
      * 生命周期函数--监听页面加载
      */
@@ -44,13 +45,32 @@ Page({
     // 获取商品列表数据
     async getGoodsList() {
         const res = await request({ url: "/goods/search", data: this.QueryParams });
+        // 获取总条数
+        const total = res.total;
+        // 计算总页数
+        this.TotalPages = Math.ceil(total / this.QueryParams.pagesize);
+        // console.log(this.TotalPages);
         this.setData({
-            goodsList: res.goods
+            goodsList: [...this.data.goodsList, ...res.goods]
         })
     },
 
+    // 标题点击事件 从子组件传递过来
     handleTabsItemChange(e) {
         const tabs = this.data.tabs.map((v, i) => { return { ...v, isActive: i === e.detail.index } })
         this.setData({ tabs })
+    },
+
+    // 页面上滑 滚动条触底事件
+    onReachBottom() {
+        // 1 判断还有没有下一页数据
+        if (this.QueryParams.pagenum >= this.TotalPages) {
+            wx.showToast({
+                title: '没有下一页数据',
+            });
+        } else {
+            this.QueryParams.pagenum++;
+            this.getGoodsList();
+        }
     }
 })
