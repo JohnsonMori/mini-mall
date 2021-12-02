@@ -8,7 +8,8 @@ Page({
     data: {
         goodsObj: {}
     },
-
+    // 商品对象
+    GoodsInfo: {},
     /**
      * 生命周期函数--监听页面加载
      */
@@ -19,6 +20,7 @@ Page({
     // 获取商品详情数据
     async getGoodsDetail(goods_id) {
         const goodsObj = await request({ url: "/goods/detail", data: { goods_id } });
+        this.GoodsInfo = goodsObj;
         this.setData({
             goodsObj: {
                 goods_name: goodsObj.goods_name,
@@ -30,5 +32,15 @@ Page({
                 pics: goodsObj.pics
             }
         })
+    },
+    // 点击轮播图 放大预览
+    handlePreviewImage(e) {
+        const urls = this.GoodsInfo.pics.map(v => v.pics_mid);
+        const current = e.currentTarget.dataset.url;
+        wx.previewImage({
+            current,
+            urls
+        });
+
     }
 })
