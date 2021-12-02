@@ -1,2 +1,6 @@
-<!--pages/cart/index.wxml-->
-<text>pages/cart/index.wxml</text>
+<!-- 收货地址 -->
+<view class="receive_address_row">
+  <view class="address_btn">
+    <button type="primary" plain>获取收货地址</button>
+  </view>
+</view>
