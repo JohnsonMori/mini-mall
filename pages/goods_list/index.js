@@ -53,6 +53,9 @@ Page({
         this.setData({
             goodsList: [...this.data.goodsList, ...res.goods]
         })
+
+        // 关闭下拉刷新的窗口
+        wx.stopPullDownRefresh();
     },
 
     // 标题点击事件 从子组件传递过来
@@ -72,5 +75,12 @@ Page({
             this.QueryParams.pagenum++;
             this.getGoodsList();
         }
+    },
+
+    // 下拉刷新事件
+    onPullDownRefresh() {
+        this.setData({ goodsList: [] });
+        this.QueryParams.pagenum = 1;
+        this.getGoodsList();
     }
 })
