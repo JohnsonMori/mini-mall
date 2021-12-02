@@ -1,6 +1,6 @@
 <!-- 收货地址 -->
 <view class="receive_address_row">
   <view class="address_btn">
-    <button type="primary" plain>获取收货地址</button>
+    <button bind:tap="handleChooseAddress" type="primary" plain>获取收货地址</button>
   </view>
 </view>
