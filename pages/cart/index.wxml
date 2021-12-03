@@ -48,7 +48,7 @@
   <!-- 全选 -->
   <view class="all_chk_wrap">
     <checkbox-group bindchange="">
-      <checkbox></checkbox>
+      <checkbox checked="{{allChecked}}">全选</checkbox>
     </checkbox-group>
   </view>
   <!-- 总价格 -->
