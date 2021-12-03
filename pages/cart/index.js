@@ -11,21 +11,8 @@ Page({
     onShow() {
         const address = wx.getStorageSync("address");
         const cart = wx.getStorageSync("cart") || [];
-        // 空数组 调用 every，返回值就是true
-        // const allChecked = cart.length ? cart.every(v => v.checked) : false;
-        let allChecked = true;
-        let totalPrice = 0;
-        let totalNum = 0;
-        cart.forEach(v => {
-            if (v.checked) {
-                totalPrice += v.num * v.goods_price;
-                totalNum += v.num;
-            } else {
-                allChecked = false;
-            }
-        });
-        allChecked = cart.length !== 0 ? allChecked : false;
-        this.setData({ address, cart, allChecked, totalPrice, totalNum });
+        this.setData({ address });
+        this.setCart(cart);
     },
     // 点击 收货地址
     async handleChooseAddress() {
@@ -41,5 +28,30 @@ Page({
         } catch (error) {
             console.log(error);
         }
+    },
+    // 商品的选中
+    handleItemChange(e) {
+        const goods_id = e.currentTarget.dataset.id;
+        let { cart } = this.data;
+        let index = cart.findIndex(v => v.goods_id === goods_id);
+        cart[index].checked = !cart[index].checked;
+        this.setCart(cart);
+    },
+    // 设置购物车状态同时 重新计算 底部工具栏的数据 全选 总价格 购买的数量
+    setCart(cart) {
+        let allChecked = true;
+        let totalPrice = 0;
+        let totalNum = 0;
+        cart.forEach(v => {
+            if (v.checked) {
+                totalPrice += v.num * v.goods_price;
+                totalNum += v.num;
+            } else {
+                allChecked = false;
+            }
+        });
+        allChecked = cart.length !== 0 ? allChecked : false;
+        this.setData({ cart, allChecked, totalPrice, totalNum });
+        wx.setStorageSync("cart", cart);
     }
 })
