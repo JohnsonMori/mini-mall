@@ -17,34 +17,40 @@
 <view class="cart_content">
   <view class="cart_title">购物车</view>
   <view class="cart_main">
-    <view class="cart_item" wx:for="{{cart}}" wx:key="goods_id">
-      <!-- 复选框 -->
-      <view class="cart_chk_wrap">
-        <checkbox-group data-id="{{item.goods_id}}" bindchange="handleItemChange">
-          <checkbox checked="{{item.checked}}" />
-        </checkbox-group>
-      </view>
-      <!-- 商品图片 -->
-      <navigator class="cart_img_wrap">
-        <image mode="widthFix" src="{{item.goods_small_logo}}" />
-      </navigator>
-      <!-- 商品信息 -->
-      <view class="cart_info_wrap">
-        <view class="goods_name">{{item.goods_name}}</view>
-        <view class="goods_price_wrap">
-          <view class="goods_price">¥{{item.goods_price}}</view>
-          <view class="cart_num_tool">
-            <view bind:tap="handleItemNumEdit" data-id="{{item.goods_id}}" data-operation="{{-1}}" class="num_edit">
-              -
-            </view>
-            <view class="goods_num">{{item.num}}</view>
-            <view bind:tap="handleItemNumEdit" data-id="{{item.goods_id}}" data-operation="{{1}}" class="num_edit">
-              +
+    <!-- 当cart数组 长度不为0 显示 商品信息 -->
+    <block wx:if="{{!!cart.length}}">
+      <view class="cart_item" wx:for="{{cart}}" wx:key="goods_id">
+        <!-- 复选框 -->
+        <view class="cart_chk_wrap">
+          <checkbox-group data-id="{{item.goods_id}}" bindchange="handleItemChange">
+            <checkbox checked="{{item.checked}}" />
+          </checkbox-group>
+        </view>
+        <!-- 商品图片 -->
+        <navigator class="cart_img_wrap">
+          <image mode="widthFix" src="{{item.goods_small_logo}}" />
+        </navigator>
+        <!-- 商品信息 -->
+        <view class="cart_info_wrap">
+          <view class="goods_name">{{item.goods_name}}</view>
+          <view class="goods_price_wrap">
+            <view class="goods_price">¥{{item.goods_price}}</view>
+            <view class="cart_num_tool">
+              <view bind:tap="handleItemNumEdit" data-id="{{item.goods_id}}" data-operation="{{-1}}" class="num_edit">
+                -
+              </view>
+              <view class="goods_num">{{item.num}}</view>
+              <view bind:tap="handleItemNumEdit" data-id="{{item.goods_id}}" data-operation="{{1}}" class="num_edit">
+                +
+              </view>
             </view>
           </view>
         </view>
       </view>
-    </view>
+    </block>
+    <block wx:else>
+      <image mode="widthFix" src="https://img1.baidu.com/it/u=143148827,3842727151&fm=26&fmt=auto" />
+    </block>
   </view>
 </view>
 <!-- 底部工具栏 -->
