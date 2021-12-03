@@ -53,5 +53,12 @@ Page({
         allChecked = cart.length !== 0 ? allChecked : false;
         this.setData({ cart, allChecked, totalPrice, totalNum });
         wx.setStorageSync("cart", cart);
+    },
+    // 商品全选功能
+    handleItemAllCheck() {
+        let { cart, allChecked } = this.data;
+        allChecked = !allChecked;
+        cart.forEach(v => v.checked = allChecked);
+        this.setCart(cart);
     }
 })
