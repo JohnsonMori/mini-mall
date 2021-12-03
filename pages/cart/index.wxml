@@ -1,6 +1,15 @@
 <!-- 收货地址 -->
 <view class="receive_address_row">
-  <view class="address_btn">
+  <!-- 当收获地址 不存在 按钮显示  对象 空对象 bool类型也是true -->
+  <view class="address_btn" wx:if="{{!address.userName}}">
     <button bind:tap="handleChooseAddress" type="primary" plain>获取收货地址</button>
+  </view>
+  <!-- 当收货地址 存在 详细信息就显示 -->
+  <view wx:else class="user_info_row">
+    <view class="user_info">
+      <view>{{address.userName}}</view>
+      <view>{{address.all}}</view>
+    </view>
+    <view class="user_phone">{{address.telNumber}}</view>
   </view>
 </view>
