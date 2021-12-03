@@ -60,7 +60,7 @@ page {
 }
 .cart_content .cart_main .cart_item .cart_info_wrap .goods_price_wrap {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
 }
 .cart_content .cart_main .cart_item .cart_info_wrap .goods_price_wrap .goods_price {
   color: var(--themeColor);
