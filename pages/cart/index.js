@@ -60,5 +60,14 @@ Page({
         allChecked = !allChecked;
         cart.forEach(v => v.checked = allChecked);
         this.setCart(cart);
+    },
+    // 商品数量的编辑功能
+    handleItemNumEdit(e) {
+        const { operation, id } = e.currentTarget.dataset;
+        console.log(operation, id);
+        let { cart } = this.data;
+        const index = cart.findIndex(v => v.goods_id === id);
+        cart[index].num += operation;
+        this.setCart(cart);
     }
 })

@@ -34,9 +34,13 @@
         <view class="goods_price_wrap">
           <view class="goods_price">¥{{item.goods_price}}</view>
           <view class="cart_num_tool">
-            <view class="num_edit">-</view>
+            <view bind:tap="handleItemNumEdit" data-id="{{item.goods_id}}" data-operation="{{-1}}" class="num_edit">
+              -
+            </view>
             <view class="goods_num">{{item.num}}</view>
-            <view class="num_edit">+</view>
+            <view bind:tap="handleItemNumEdit" data-id="{{item.goods_id}}" data-operation="{{1}}" class="num_edit">
+              +
+            </view>
           </view>
         </view>
       </view>
@@ -60,5 +64,5 @@
     <view>包含运费</view>
   </view>
   <!-- 结算 -->
-  <view class="order_pay_wrap">结算({{totaNum}})</view>
+  <view class="order_pay_wrap">结算({{totalNum}})</view>
 </view>
