@@ -48,6 +48,7 @@ Page({
         let index = cart.findIndex(v => v.goods_id === this.GoodsInfo.goods_id);
         if (index === -1) {
             this.GoodsInfo.num = 1;
+            this.GoodsInfo.checked = true;
             cart.push(this.GoodsInfo);
         } else {
             cart[index].num++;

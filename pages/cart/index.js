@@ -3,10 +3,12 @@ import regeneratorRuntime from '../../lib/runtime/runtime';
 Page({
     data: {
         address: {},
+        cart: []
     },
     onShow() {
         const address = wx.getStorageSync("address");
-        this.setData({ address });
+        const cart = wx.getStorageSync("cart");
+        this.setData({ address, cart });
     },
     // 点击 收货地址
     async handleChooseAddress() {
