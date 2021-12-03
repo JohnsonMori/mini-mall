@@ -1,4 +1,4 @@
-import { getSetting, chooseAddress, openSetting } from '../../utils/asyncWx.js';
+import { getSetting, chooseAddress, openSetting, showModal } from '../../utils/asyncWx.js';
 import regeneratorRuntime from '../../lib/runtime/runtime';
 Page({
     data: {
@@ -62,12 +62,19 @@ Page({
         this.setCart(cart);
     },
     // 商品数量的编辑功能
-    handleItemNumEdit(e) {
+    async handleItemNumEdit(e) {
         const { operation, id } = e.currentTarget.dataset;
-        console.log(operation, id);
         let { cart } = this.data;
         const index = cart.findIndex(v => v.goods_id === id);
-        cart[index].num += operation;
-        this.setCart(cart);
+        if (cart[index].num === 1 && operation === -1) {
+            const res = await showModal({ content: "您是否要删除？" });
+            if (res.confirm) {
+                cart.splice(index, 1);
+                this.setCart(cart);
+            }
+        } else {
+            cart[index].num += operation;
+            this.setCart(cart);
+        }
     }
 })
