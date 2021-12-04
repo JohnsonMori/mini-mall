@@ -47,6 +47,9 @@ Page({
             await requestPayment(pay);
             const res = await request({ url: "/my/orders/chkOrder", method: "POST", header, data: { order_number } });
             await showToast({ title: "支付成功" });
+            let newCart = wx.getStorageSync("cart");
+            newCart = newCart.filter(v => !v.checked);
+            wx.setStorageSync("cart", newCart);
             wx.navigateTo({
                 url: '/pages/order/index'
             });
