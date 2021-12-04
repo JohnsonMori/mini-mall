@@ -119,3 +119,21 @@ export const requestPayment = (pay) => {
     });
   })
 }
+/**
+ * promise 形式的 getUserProfile
+ * @param {object} param0
+ * @returns
+ */
+export const getUserProfile = ({ desc }) => {
+  return new Promise((resolve, reject) => {
+    wx.getUserProfile({
+      desc,
+      success: (result) => {
+        resolve(result);
+      },
+      fail: (err) => {
+        reject(err);
+      }
+    });
+  })
+}
