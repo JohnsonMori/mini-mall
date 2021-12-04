@@ -95,7 +95,27 @@ export const login = () => {
       success: (result) => {
         resolve(result);
       },
-      fail: (err) => { reject(err); }
+      fail: (err) => {
+        reject(err);
+      }
+    });
+  })
+}
+/**
+ * promise 形式的 小程序的微信支付
+ * @param {object} pay
+ * @returns
+ */
+export const requestPayment = (pay) => {
+  return new Promise((resolve, reject) => {
+    wx.requestPayment({
+      ...pay,
+      success: (result) => {
+        resolve(result);
+      },
+      fail: (err) => {
+        reject(err);
+      }
     });
   })
 }

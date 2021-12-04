@@ -1,4 +1,4 @@
-import { getSetting, chooseAddress, openSetting, showModal, showToast } from '../../utils/asyncWx.js';
+import { requestPayment, showToast } from '../../utils/asyncWx.js';
 import regeneratorRuntime from '../../lib/runtime/runtime';
 import { request } from "../../request/index.js";
 Page({
@@ -23,25 +23,36 @@ Page({
     },
     // 点击 支付
     async handleOrderPay() {
-        const token = wx.getStorageSync("token");
-        if (!token) {
+        try {
+            const token = wx.getStorageSync("token");
+            if (!token) {
+                wx.navigateTo({
+                    url: '/pages/auth/index'
+                });
+                return;
+            }
+            const header = { Authorization: token };
+            const order_price = this.data.totalPrice;
+            const consignee_addr = this.data.address.all;
+            let cart = this.data.cart;
+            let goods = [];
+            cart.forEach(v => goods.push({
+                goods_id: v.goods_id,
+                goods_number: v.num,
+                goods_price: v.goods_price,
+            }))
+            const orderParams = { order_price, consignee_addr, goods };
+            const { order_number } = await request({ url: "/my/orders/create", method: "POST", data: orderParams, header });
+            const { pay } = await request({ url: "/my/orders/req_unifiedorder", method: "POST", header, data: { order_number } });
+            await requestPayment(pay);
+            const res = await request({ url: "/my/orders/chkOrder", method: "POST", header, data: { order_number } });
+            await showToast({ title: "支付成功" });
             wx.navigateTo({
-                url: '/pages/auth/index'
+                url: '/pages/order/index'
             });
-            return;
+        } catch (error) {
+            await showToast({ title: "支付失败" });
+            console.log(error);
         }
-        const header = { Authorization: token };
-        const order_price = this.data.totalPrice;
-        const consignee_addr = this.data.address.all;
-        let cart = this.data.cart;
-        let goods = [];
-        cart.forEach(v => goods.push({
-            goods_id: v.goods_id,
-            goods_number: v.num,
-            goods_price: v.goods_price,
-        }))
-        const orderParams = { order_price, consignee_addr, goods };
-        const { order_number } = await request({ url: "/my/orders/create", method: "POST", data: orderParams, header });
-        console.log(order_number);
     }
 })
