@@ -31,7 +31,7 @@ Page({
                 });
                 return;
             }
-            const header = { Authorization: token };
+            // const header = { Authorization: token };
             const order_price = this.data.totalPrice;
             const consignee_addr = this.data.address.all;
             let cart = this.data.cart;
@@ -42,10 +42,10 @@ Page({
                 goods_price: v.goods_price,
             }))
             const orderParams = { order_price, consignee_addr, goods };
-            const { order_number } = await request({ url: "/my/orders/create", method: "POST", data: orderParams, header });
-            const { pay } = await request({ url: "/my/orders/req_unifiedorder", method: "POST", header, data: { order_number } });
+            const { order_number } = await request({ url: "/my/orders/create", method: "POST", data: orderParams });
+            const { pay } = await request({ url: "/my/orders/req_unifiedorder", method: "POST", data: { order_number } });
             await requestPayment(pay);
-            const res = await request({ url: "/my/orders/chkOrder", method: "POST", header, data: { order_number } });
+            const res = await request({ url: "/my/orders/chkOrder", method: "POST", data: { order_number } });
             await showToast({ title: "支付成功" });
             let newCart = wx.getStorageSync("cart");
             newCart = newCart.filter(v => !v.checked);
