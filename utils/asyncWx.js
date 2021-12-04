@@ -65,3 +65,22 @@ export const showModal = ({ content }) => {
     });
   })
 }
+/**
+ * promise 形式 showToast
+ * @param {object} param0
+ * @returns
+ */
+export const showToast = ({ title }) => {
+  return new Promise((resolve, reject) => {
+    wx.showToast({
+      title,
+      icon: "none",
+      success: (result) => {
+        resolve(result);
+      },
+      fail: (err) => {
+        reject(err);
+      }
+    });
+  })
+}

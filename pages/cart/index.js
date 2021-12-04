@@ -1,4 +1,4 @@
-import { getSetting, chooseAddress, openSetting, showModal } from '../../utils/asyncWx.js';
+import { getSetting, chooseAddress, openSetting, showModal, showToast } from '../../utils/asyncWx.js';
 import regeneratorRuntime from '../../lib/runtime/runtime';
 Page({
     data: {
@@ -76,5 +76,20 @@ Page({
             cart[index].num += operation;
             this.setCart(cart);
         }
+    },
+    // 点击 结算
+    async handlePay() {
+        const { address, totalNum } = this.data;
+        if (!address.userName) {
+            await showToast({ title: "您还没有选择收货地址" });
+            return;
+        }
+        if (!totalNum) {
+            await showToast({ title: "您还没有选购商品" });
+            return;
+        }
+        wx.navigateTo({
+            url: '/pages/pay/index'
+        });
     }
 })
