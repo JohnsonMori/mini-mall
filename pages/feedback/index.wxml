@@ -11,7 +11,7 @@
       <textarea placeholder="请描述一下您的问题" />
       <view class="fb_tool">
         <button bind:tap="handleChooseImg">+</button>
-        <view class="up_img_item" wx:for="{{chooseImgs}}" wx:key="*this">
+        <view class="up_img_item" wx:for="{{chooseImgs}}" wx:key="*this" bind:tap="handleRemoveImg" data-index="{{index}}">
           <UpImg src="{{item}}" />
         </view>
       </view>

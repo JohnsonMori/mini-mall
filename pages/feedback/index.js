@@ -33,6 +33,14 @@ Page({
                 })
             }
         });
-
+    },
+    // 点击 自定义图片组件
+    handleRemoveImg(e) {
+        const { index } = e.currentTarget.dataset;
+        let { chooseImgs } = this.data;
+        chooseImgs.splice(index, 1);
+        this.setData({
+            chooseImgs
+        })
     }
 })
