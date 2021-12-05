@@ -45,6 +45,8 @@ page {
   position: relative;
 }
 .user_content .user_main {
+  padding-bottom: 100rpx;
+  color: #666;
   position: absolute;
   width: 90%;
   left: 50%;
@@ -82,4 +84,26 @@ page {
 .user_content .user_main .orders_wrap .orders_content navigator .iconfont {
   color: var(--themeColor);
   font-size: 40rpx;
+}
+.user_content .user_main .address_wrap {
+  margin-top: 30rpx;
+  background-color: #fff;
+  padding: 20rpx;
+}
+.user_content .user_main .app_info_wrap {
+  margin-top: 30rpx;
+  background-color: #fff;
+}
+.user_content .user_main .app_info_wrap .app_info_item {
+  padding: 20rpx;
+  border-bottom: 1rpx solid #ccc;
+}
+.user_content .user_main .app_info_wrap .app_info_contact {
+  display: flex;
+  justify-content: space-between;
+}
+.user_content .user_main .recommend_wrap {
+  margin-top: 30rpx;
+  background-color: #fff;
+  padding: 20rpx;
 }

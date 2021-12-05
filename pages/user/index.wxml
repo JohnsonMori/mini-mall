@@ -53,5 +53,18 @@
         </navigator>
       </view>
     </view>
+    <!-- 收货地址管理 -->
+    <view class="address_wrap">收货地址管理</view>
+    <!-- 应用信息相关 -->
+    <view class="app_info_wrap">
+      <view class="app_info_item app_info_contact">
+        <text>联系客服</text>
+        <text>400-618-4000</text>
+      </view>
+      <view class="app_info_item">意见反馈</view>
+      <view class="app_info_item">关于我们</view>
+      <!-- 推荐 -->
+    </view>
+    <view class="recommend_wrap">把应用推荐给其他人</view>
   </view>
 </view>
