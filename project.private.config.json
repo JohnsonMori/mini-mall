@@ -23,6 +23,12 @@
                     "pathName": "pages/user/index",
                     "query": "",
                     "scene": null
+                },
+                {
+                    "name": "订单查询",
+                    "pathName": "pages/order/index",
+                    "query": "type=1",
+                    "scene": null
                 }
             ]
         }
