@@ -11,7 +11,14 @@
             "list": []
         },
         "miniprogram": {
-            "list": []
+            "list": [
+                {
+                    "name": "意见反馈",
+                    "pathName": "pages/feedback/index",
+                    "query": "",
+                    "scene": null
+                }
+            ]
         }
     }
 }
