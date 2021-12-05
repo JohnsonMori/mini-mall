@@ -1,2 +1,1 @@
-<!--pages/collect/index.wxml-->
-<text>pages/collect/index.wxml</text>
+<Tabs tabs="{{tabs}}" bind:tabsItemChange="handleTabsItemChange">内容</Tabs>
