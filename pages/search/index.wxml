@@ -1,9 +1,9 @@
 <view class="search_row">
-  <input placeholder="请输入您要搜索的商品" bindinput="handleInput" />
-  <button>取消</button>
+  <input value="{{inpValue}}" placeholder="请输入您要搜索的商品" bindinput="handleInput" />
+  <button hidden="{{!isFocus}}" bind:tap="handleCancel">取消</button>
 </view>
 <view class="search_content">
-  <navigator class="search_item" wx:for="{{goods}}" wx:key="goods_id">
+  <navigator url="/pages/goods_detail/index?goods_id={{item.goods_id}}" class="search_item" wx:for="{{goods}}" wx:key="goods_id">
     {{item.goods_name}}
   </navigator>
 </view>
