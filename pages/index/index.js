@@ -32,7 +32,9 @@ Page({
     request({ url: "/home/swiperdata" })
       .then(result => {
         this.setData({
-          swiperList: result
+          swiperList: result.map(v => (
+            { ...v, navigator_url: v.navigator_url.replace("main", "index") })
+          )
         })
       })
   },
@@ -50,7 +52,17 @@ Page({
     request({ url: "/home/floordata" })
       .then(result => {
         this.setData({
-          floorList: result
+          floorList: result.map(i => {
+            return {
+              ...i,
+              product_list: i.product_list.map(j => {
+                return {
+                  ...j,
+                  navigator_url: j.navigator_url.replace("?", "/index?")
+                }
+              })
+            }
+          })
         })
       })
   }
