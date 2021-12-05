@@ -42,6 +42,7 @@ Page({
         let pages = getCurrentPages();
         let currentPage = pages[pages.length - 1];
         const { type } = currentPage.options;
+        this.changeTitleByIndex(type - 1);
         this.getOrders(type);
     },
     // 获取订单列表的方法
@@ -51,8 +52,14 @@ Page({
             orders: res.orders
         })
     },
+    // 根据标题索引来激活选中 标题数组
+    changeTitleByIndex(index) {
+        const tabs = this.data.tabs.map((v, i) => { return { ...v, isActive: i === index } });
+        this.setData({ tabs });
+    },
     handleTabsItemChange(e) {
-        const tabs = this.data.tabs.map((v, i) => { return { ...v, isActive: i === e.detail.index } })
-        this.setData({ tabs })
+        const { index } = e.detail;
+        this.changeTitleByIndex(index);
+        this.getOrders(index + 1);
     }
 })
