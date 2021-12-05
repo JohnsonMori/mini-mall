@@ -65,6 +65,31 @@ Page({
             icon: 'success',
             mask: true
         });
-
+    },
+    // 点击 商品收藏图标
+    handleCollect() {
+        let isCollect = false;
+        let collect = wx.getStorageSync("collect") || [];
+        let index = collect.findIndex(v => v.goods_id === this.GoodsInfo.goods_id);
+        if (index !== -1) {
+            collect.splice(index, 1);
+            wx.showToast({
+                title: '取消成功',
+                icon: 'success',
+                mask: true
+            });
+        } else {
+            collect.push(this.GoodsInfo);
+            isCollect = true;
+            wx.showToast({
+                title: '收藏成功',
+                icon: 'success',
+                mask: true
+            });
+        }
+        wx.setStorageSync("collect", collect);
+        this.setData({
+            isCollect
+        })
     }
 })
