@@ -6,21 +6,26 @@ Page({
      * 页面的初始数据
      */
     data: {
-        goodsObj: {}
+        goodsObj: {},
+        isCollect: false
     },
     // 商品对象
     GoodsInfo: {},
     /**
      * 生命周期函数--监听页面加载
      */
-    onLoad: function (options) {
-        const { goods_id } = options;
+    onShow: function () {
+        let pages = getCurrentPages();
+        let currentPage = pages[pages.length - 1];
+        const { goods_id } = currentPage.options;
         this.getGoodsDetail(goods_id);
     },
     // 获取商品详情数据
     async getGoodsDetail(goods_id) {
         const goodsObj = await request({ url: "/goods/detail", data: { goods_id } });
         this.GoodsInfo = goodsObj;
+        let collect = wx.getStorageSync("collect") || [];
+        let isCollect = collect.some(v => v.goods_id === this.GoodsInfo.goods_id);
         this.setData({
             goodsObj: {
                 goods_name: goodsObj.goods_name,
@@ -30,7 +35,8 @@ Page({
                 // 临时自己改 确保后台存在 1.webp => 1.jpg
                 goods_introduce: goodsObj.goods_introduce.replace(/\.webp/g, '.jpg'),
                 pics: goodsObj.pics
-            }
+            },
+            isCollect
         })
     },
     // 点击轮播图 放大预览
