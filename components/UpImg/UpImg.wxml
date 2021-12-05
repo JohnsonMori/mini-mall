@@ -1,4 +1,4 @@
 <view class="up_img_wrap">
-  <image src="https://img0.baidu.com/it/u=551244729,1913133680&fm=26&fmt=auto" />
-  <icon type="clear" size="23" color="red" />
+  <image class="up_img_image" src="{{src}}" />
+  <icon class="up_img_remove" type="clear" size="23" color="red" />
 </view>

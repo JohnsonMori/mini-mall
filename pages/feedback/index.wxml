@@ -10,9 +10,9 @@
     <view class="fb_content">
       <textarea placeholder="请描述一下您的问题" />
       <view class="fb_tool">
-        <button>+</button>
-        <view class="up_img_item">
-          <UpImg />
+        <button bind:tap="handleChooseImg">+</button>
+        <view class="up_img_item" wx:for="{{chooseImgs}}" wx:key="*this">
+          <UpImg src="{{item}}" />
         </view>
       </view>
     </view>

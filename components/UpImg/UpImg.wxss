@@ -4,13 +4,13 @@
   position: relative;
 }
 
-.up_img_wrap image {
+.up_img_image {
   width: 100%;
   height: 100%;
   border-radius: 15rpx;
 }
 
-.up_img_wrap icon {
+.up_img_remove {
   position: absolute;
   top: -22rpx;
   right: -22rpx;
