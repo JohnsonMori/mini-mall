@@ -57,4 +57,5 @@ page {
   color: #fff;
   margin: 0;
   width: 30%;
+  white-space: nowrap;
 }
